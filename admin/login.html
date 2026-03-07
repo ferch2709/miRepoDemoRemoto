@@ -4,20 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fomiland</title>
+    <!-- Iconos y jQuery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div class = "formulario">
-        <h1>Inicio de sesion</h1>
+    <div class="formulario">
+        <h1>Inicio de sesión</h1>
         <form method="post">
+            <!-- Usuario -->
             <div class="username">
                 <input type="text" required>
                 <label>Nombre del usuario</label>
+                <span></span>
             </div>
+
+            <!-- Contraseña con el Ojo integrado -->
             <div class="username">
-                <input type="password" required>
-                <label>Contraseña</label>
-            </div>
+            <input type="password" id="password-field" name="password" required>
+            <label>Contraseña</label>
+             <!-- Este es el icono del ojo -->
+            <i class="fa fa-eye-slash" id="togglePassword"></i>
+            <span></span>
+</div>
+
             <div class="recordar">¿Olvidó su contraseña?</div>
             <input type="submit" value="Iniciar">
             <div class="registrarse">
@@ -26,5 +37,23 @@
             </div>
         </form>
     </div>
+
+    <!-- Script de funcionalidad -->
+    <script>
+        $(document).ready(function () {
+            $("#togglePassword").click(function() {
+                const passwordInput = $("#password-field");
+                const type = passwordInput.attr("type");
+
+                if (type === "password") {
+                    passwordInput.attr("type", "text");
+                    $(this).removeClass("fa-eye-slash").addClass("fa-eye");
+                } else {
+                    passwordInput.attr("type", "password");
+                    $(this).removeClass("fa-eye").addClass("fa-eye-slash");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
