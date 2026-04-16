@@ -1,0 +1,80 @@
+/* 1. Contenedor principal: Ajustamos el padding para móviles */
+.pokedex-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px; /* Menos espacio en las orillas para celulares */
+}
+
+/* 2. Título responsivo: Usamos 'clamp' para que el tamaño cambie según la pantalla */
+.title {
+  color: #ffcb05;
+  text-align: center;
+  font-size: clamp(2rem, 8vw, 3.5rem); /* Se encoge en móvil, crece en PC */
+  text-shadow: 3px 3px 0px #3b4cca;
+  margin-bottom: 30px;
+}
+
+/* 3. EL TRUCO DE LA RESPONSIVIDAD: El Grid */
+.grid {
+  display: grid;
+  /* 'auto-fill' llena el espacio disponible */
+  /* 'minmax' dice: "como mínimo mide 150px, como máximo ocupa el resto (1fr)" */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+  gap: 15px;
+}
+
+/* 4. Media Queries para ajustes específicos */
+
+/* Para tablets o pantallas medianas (menos de 768px) */
+@media (max-width: 768px) {
+  .type-title {
+    width: 100%; /* El título del tipo ocupa todo el ancho */
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
+/* Para celulares pequeños (menos de 480px) */
+@media (max-width: 480px) {
+  .grid {
+    /* En celulares muy pequeños, quizás solo queremos 2 columnas */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+  }
+  
+  .card {
+    padding: 10px; /* Tarjetas un poco más compactas */
+  }
+
+  .name {
+    font-size: 0.9rem; /* Letra un poco más pequeña */
+  }
+}
+
+/* --- El resto del estilo se mantiene igual --- */
+.type-section { margin-bottom: 40px; }
+.type-title {
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+.grass { background-color: #78c850; }
+.fire { background-color: #f08030; }
+.water { background-color: #6890f0; }
+.bug { background-color: #a8b820; }
+.normal { background-color: #a8a878; }
+.poison { background-color: #a040a0; }
+.electric { background-color: #f8d030; color: #333; }
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.card img { width: 100%; height: auto; }
+.name { color: #333; text-transform: capitalize; font-weight: bold; }
