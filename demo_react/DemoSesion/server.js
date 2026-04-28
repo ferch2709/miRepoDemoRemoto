@@ -25,8 +25,8 @@ app.post("/login", (req, res) => {
 
     // Validación
     if (username === "admin" && password === "12345") {
+        console.log("Login realizado");
         const token = jwt.sign({ username }, SECRET, { expiresIn: "1h" });
-        
         res.cookie("token", token, {
             httpOnly: true,
             secure: false, // false porque estás en localhost (sin HTTPS)
@@ -41,9 +41,10 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/perfil", auth, (req, res) => {
+    console.log("Cookie:",req.cookie);
     res.json({
         message: "Eres un usuario protegido",
-        user: req.username
+        user: req.user
     });
 });
 

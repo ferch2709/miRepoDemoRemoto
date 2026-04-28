@@ -4,10 +4,11 @@ import './index.css'
 //import App from './App.jsx'
 //import AppLocalStorage from './sessionLocalStorage/AppLocalStorage'
 //import AppCookie from './cookiesSesion/AppCookie'
-import AppCookieHttpOnly from './cookieHttpOnly/AppCookieHttpOnly'
+//import AppCookieHttpOnly from './cookieHttpOnly/AppCookieHttpOnly'
+import AppProtectedRoute from './protectedRoute/AppProtectedRoute'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AppCookieHttpOnly />
+    <AppProtectedRoute />
   </StrictMode>,
 )
